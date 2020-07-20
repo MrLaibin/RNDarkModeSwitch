@@ -1,4 +1,4 @@
-import {ThemeMode} from "./IBUThemeProvider";
+import {ThemeMode} from "./ThemeProvider";
 
 export class IBUColor {
     static quaternaryGray() {

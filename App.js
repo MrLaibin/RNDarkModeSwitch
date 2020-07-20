@@ -7,58 +7,22 @@
  */
 
 import React, {useEffect} from 'react';
-import {View, Text, StatusBar, useColorScheme} from 'react-native';
-import MyFIrstView from './MyFIrstView';
-const ThemeContext = React.createContext('light');
-import {Appearance, AppearanceProvider} from 'react-native-appearance';
-import {IBUThemeContext, IBUThemeProvider} from './src/IBUThemeProvider';
+import {View, Appearance, Text, StatusBar, useColorScheme} from 'react-native';
+import {ThemeProvider} from './src/ThemeProvider';
 import MyClass from './src/MyClass';
 export const LoginContext = React.createContext(null);
-
-const user = {
-  isLoggedIn: true,
-  username: 'test',
-};
-
-Appearance.getColorScheme();
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoggedIn: false,
-      user: user,
-    };
   }
-  componentDidMount() {
-    console.log('component did');
-  }
-  componentWillUnmount() {}
-
   render() {
     return (
-      <AppearanceProvider>
-        <IBUThemeProvider>
-          <MyClass>
-            <Text> my class Text</Text>
-          </MyClass>
-          <Test />
-        </IBUThemeProvider>
-      </AppearanceProvider>
+      <ThemeProvider>
+        <MyClass>
+          <Text> my class Text</Text>
+        </MyClass>
+      </ThemeProvider>
     );
   }
-}
-
-function Test() {
-  const colorScheme = useColorScheme();
-  useEffect(() => {
-    Appearance.addChangeListener((preferences) => {
-      console.log(preferences);
-    });
-  }, []);
-  return (
-    <View style={{padding: 20}}>
-      <Text>{colorScheme}</Text>
-    </View>
-  );
 }
