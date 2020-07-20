@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {LoginContext} from './App';
-import * as Appearance from 'react-native-appearance';
 export default class MyFIrstView extends React.Component {
   render() {
     return (

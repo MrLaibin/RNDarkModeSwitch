@@ -15,11 +15,10 @@ export default class MyClass extends React.Component {
         // ....
     }
     componentDidMount() {
-
-        Appearance.addChangeListener(({colorScheme}) => {
-            console.log(colorScheme)
-            alert('klsfdj');
-        });
+        // Appearance.addChangeListener(({colorScheme}) => {
+        //     console.log(colorScheme)
+        //     alert('klsfdj');
+        // });
     }
 
     // ...

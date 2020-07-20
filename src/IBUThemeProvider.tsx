@@ -2,8 +2,7 @@
 import * as React from "react";
 import {Component} from "react";
 import {IBUTheme} from "./IBUTheme";
-import {Appearance, Text} from 'react-native'
-import {ColorSchemeName} from "react-native-appearance/src/Appearance.types";
+import {Appearance, ColorSchemeName, Text} from 'react-native'
 export declare interface IBUThemeProviderProps {
 
 }
@@ -43,7 +42,17 @@ export class IBUThemeProvider extends Component<IBUThemeProviderProps, IBUThemeP
         })
          Appearance.addChangeListener(({colorScheme}) => {
              console.log(colorScheme)
-            alert('klsfdj');
+             if (colorScheme === 'light') {
+                 IBUThemeProvider.theme = ThemeMode.light;
+                 this.setState({
+                     theme:ThemeMode.light
+                 });
+             }else{
+                 IBUThemeProvider.theme = ThemeMode.dark;
+                 this.setState({
+                     theme:ThemeMode.dark
+                 });
+             }
         });
     }
     componentWillUnmount() {

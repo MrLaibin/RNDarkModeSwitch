@@ -10,9 +10,9 @@ import React, {useEffect} from 'react';
 import {View, Text, StatusBar, useColorScheme} from 'react-native';
 import MyFIrstView from './MyFIrstView';
 const ThemeContext = React.createContext('light');
-import {Appearance, AppearanceProvider} from 'react-native-appearance';
 import {IBUThemeContext, IBUThemeProvider} from './src/IBUThemeProvider';
 import MyClass from './src/MyClass';
+import * as Appearance from "react-native";
 export const LoginContext = React.createContext(null);
 
 const user = {
@@ -20,7 +20,7 @@ const user = {
   username: 'test',
 };
 
-Appearance.getColorScheme();
+
 
 export default class App extends React.Component {
   constructor(props) {
@@ -37,14 +37,12 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <AppearanceProvider>
         <IBUThemeProvider>
           <MyClass>
             <Text> my class Text</Text>
           </MyClass>
           <Test />
         </IBUThemeProvider>
-      </AppearanceProvider>
     );
   }
 }
@@ -52,9 +50,9 @@ export default class App extends React.Component {
 function Test() {
   const colorScheme = useColorScheme();
   useEffect(() => {
-    Appearance.addChangeListener((preferences) => {
-      console.log(preferences);
-    });
+    // Appearance.addChangeListener((preferences) => {
+    //   console.log(preferences);
+    // });
   }, []);
   return (
     <View style={{padding: 20}}>
