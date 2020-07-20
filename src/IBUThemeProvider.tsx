@@ -63,19 +63,20 @@ export class IBUThemeProvider extends Component<IBUThemeProviderProps, IBUThemeP
         const { theme } = this.state;
         const { children } = this.props;
         return <IBUThemeContext.Provider value={theme}>
-
+            {children}
             <Text style={{fontSize:20,padding:20}} onPress={()=>{
                 if (this.state.theme === ThemeMode.light) {
                     this.setState({
                         theme:ThemeMode.dark
                     });
+                    IBUThemeProvider.theme = ThemeMode.dark;
                 }else{
                     this.setState({
                         theme:ThemeMode.light
                     });
+                    IBUThemeProvider.theme = ThemeMode.light;
                 }
-
             }}>switch {this.state.theme}</Text>
-            {children}</IBUThemeContext.Provider>;
+        </IBUThemeContext.Provider>;
     }
 }

@@ -1,7 +1,7 @@
 import {View, Text, Appearance} from "react-native";
 import {IBUDynamicStyleSheet} from "./IBUDynamicStyleSheet";
 import {IBUColor} from "./IBUColor";
-import {IBUThemeContext} from "./IBUThemeProvider";
+import {IBUThemeContext, ThemeMode} from "./IBUThemeProvider";
 import * as React from "react";
 
 export default class MyClass extends React.Component {
@@ -24,14 +24,24 @@ export default class MyClass extends React.Component {
     // ...
     render() {
         const theme = this.context; // 'light'|'dark'
-        /* render something based on the value of IBUThemeContext */
         const styles = dynamicStyles(theme);
         return(
-            <View style={{ backgroundColor: IBUColor.orange(theme), flex: 1 }}>
+            <View style={styles.container}>
                 <View style={styles.icon}/>
-                <Text>{theme}</Text>
+                <Text style={styles.text}>{theme}</Text>
                 {this.props.children}
-                {/* render something else */}
+                {/*<Text style={{fontSize:20,padding:20}} onPress={()=>{*/}
+                {/*    if (this.state.theme === ThemeMode.light) {*/}
+                {/*        this.setState({*/}
+                {/*            theme:ThemeMode.dark*/}
+                {/*        });*/}
+                {/*    }else{*/}
+                {/*        this.setState({*/}
+                {/*            theme:ThemeMode.light*/}
+                {/*        });*/}
+                {/*    }*/}
+
+                {/*}}>switch {this.state.theme}</Text>*/}
             </View>
         )
     }
@@ -41,4 +51,13 @@ const dynamicStyles = IBUDynamicStyleSheet(() => ({
         backgroundColor: IBUColor.quaternaryGray(),
         height: 20,
     },
+    container: {
+        paddingTop:50,
+        backgroundColor: IBUColor.backgroundColor(),
+        flex:1
+    },
+    text:{
+        color:IBUColor.textColor1(),
+        fontSize:30
+    }
 }));

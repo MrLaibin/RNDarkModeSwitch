@@ -2,6 +2,7 @@ import {ImageStyle,StyleSheet, TextStyle, ViewStyle} from "react-native";
 import {IBUThemeProvider} from "./IBUThemeProvider";
 
 type IBUNamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
+
 export function IBUDynamicStyleSheet<T extends IBUNamedStyles<T> | IBUNamedStyles<any>>(
     callback: () => T | IBUNamedStyles<T>
 ): (theme?: 'light' | 'dark') => T {
